@@ -14,16 +14,15 @@ class userService extends baseService {
         // this.req =  req
         // this.res = res
     }
-    async createUser(user: User) {
+    async createUser(res:Response,req:Request,user: User) {
         try {
             let result = await this.userStore.addUser(user)
             if (result) {
-              return baseService.res.status(200).json(result);
-
+                return super.ok(res,null,"User created successfully");
             }
         }
         catch (error) {
-            baseService.res.status(200).send(error.message);
+            return super.error(res,error.message);
         }
     }
 }

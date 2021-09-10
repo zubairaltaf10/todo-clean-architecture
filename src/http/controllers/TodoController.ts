@@ -1,8 +1,6 @@
-import { UserModel } from "../db/models/user"
+import { UserModel } from "../../../database/models/user"
 import { Router, Request, Response, NextFunction } from 'express';
-import { TodoModel } from "../db/models/todo";
 import todoService from "../../services/todoService";
-
 
 class TodoController {
     constructor() {
@@ -10,35 +8,29 @@ class TodoController {
     }
 
     async createTODO(req: Request, res: Response, next: NextFunction) {
-       return todoService.createTodo(req.body)
+
+       return todoService.createTodo(req,res,req.body)
     }
 
     async getTODO(req: Request, res: Response, next: NextFunction) {
-        return todoService.getTodobyId(req)
+        return todoService.getTodobyId(res,req)
     }
 
 
     async editTODO(req: Request, res: Response, next: NextFunction):Promise<void> {
-        try {
-            await TodoModel.update(req.body,{
-               where : {id:req.params.id}
-           })
-            res.status(200).send({response:"todo updated successfully"})
-        } catch (error) {
-            res.status(400).send(error)
-        }
+        // try {
+        //     await TodoModel.update(req.body,{
+        //        where : {id:req.params.id}
+        //    })
+        //     res.status(200).send({response:"todo updated successfully"})
+        // } catch (error) {
+        //     res.status(400).send(error)
+        // }
 
     }
 
     async deleteTODO(req: Request, res: Response, next: NextFunction) {
-        try {
-            await TodoModel.destroy({
-               where : {id:req.params.id}
-           })
-            res.status(200).send({response:"todo deleted successfully"})
-        } catch (error) {
-            res.status(400).send(error)
-        }
+       return todoService.deleteTodo(res,req)
 
     }
 

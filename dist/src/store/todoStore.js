@@ -6,14 +6,14 @@ class todoStore {
     constructor() {
         this.repository = new todoRepository_1.TodoRepository();
     }
-    getTodoByNameOrId(id, email) {
-        throw new Error("Method not implemented.");
+    getTodo(req) {
+        return this.repository.getTodo(req);
     }
     addTodo(request) {
         return this.repository.createTodo(request);
     }
     deleteTodo(id) {
-        throw new Error("Method not implemented.");
+        return this.repository.deleteTodo(id);
     }
     getAllTodos() {
         throw new Error("Method not implemented.");

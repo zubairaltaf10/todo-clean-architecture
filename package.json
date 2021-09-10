@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && nodemon ./src/http/server/app.ts",
+    "start": "tsc && nodemon ./bin/www.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zubair",
@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "googleapis": "^85.0.0",
     "guid-typescript": "^1.0.9",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",

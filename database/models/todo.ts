@@ -1,7 +1,6 @@
 import { Model,DataTypes, Sequelize } from "sequelize";
-import sequelize from "../config/sequelize";
 import { Guid } from "guid-typescript";
-
+import sequelize from "../repositories/sqlConnection";
 export interface TodoAttributes {
   id : any
   title: string

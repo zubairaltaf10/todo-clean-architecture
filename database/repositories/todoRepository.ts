@@ -1,6 +1,6 @@
 import { Todo } from "../../src/entities/todo";
 import { User } from "../../src/entities/user";
-import { TodoModel } from "../../src/http/db/models/todo";
+import { TodoModel } from "../models/todo";
 
 export class TodoRepository {
 
@@ -14,6 +14,12 @@ export class TodoRepository {
             where : {id:req}
         })
         return response
-        
+    }
+
+    async deleteTodo(id:string):Promise<number>{
+        let response = await TodoModel.destroy({
+            where : {id}
+        })
+        return response
     }
 }

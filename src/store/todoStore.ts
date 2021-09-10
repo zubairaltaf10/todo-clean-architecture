@@ -16,8 +16,8 @@ export class todoStore implements ITodoStore{
     addTodo(request: Todo): Promise<Todo> {
         return this.repository.createTodo(request)
     }
-    deleteTodo(id: string): Promise<Todo> {
-        throw new Error("Method not implemented.");
+    deleteTodo(id: string): Promise<number> {
+     return this.repository.deleteTodo(id)
     }
     getAllTodos(): Promise<Todo[]> {
         throw new Error("Method not implemented.");

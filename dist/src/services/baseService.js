@@ -11,6 +11,20 @@ class baseService {
         this.res = res;
         next();
     }
+    ok(res, req) {
+        if (req) {
+            return res.status(httpStatus.success).json(req.body);
+        }
+        else {
+            return res.sendStatus(httpStatus.success);
+        }
+    }
+    created(res) {
+        return res.sendStatus(httpStatus.created);
+    }
+    error(res, err) {
+        return res.sendStatus(httpStatus.error).json(err);
+    }
 }
 exports.baseService = baseService;
 //# sourceMappingURL=baseService.js.map

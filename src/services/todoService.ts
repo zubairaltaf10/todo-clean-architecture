@@ -11,27 +11,37 @@ class todoService extends baseService {
         super();
         this.todoStore = new todoStore()
     }
-    async createTodo(todo: Todo) {
+    async createTodo(req:Request,res:Response,todo: Todo) {
         try {
             let result = await this.todoStore.addTodo(todo)
             if (result) {
-              return baseService.res.status(200).json({"response":"todo created successfully"});
+                return super.created(res,{"response": "todo created successfully"})
             }
         }
         catch (error) {
-            baseService.res.status(200).send(error.message);
+            super.error(res,(error.message))
         }
     }
 
-    async getTodobyId(req:Request){
+    async getTodobyId(res:Response,req: Request) {
         let todo;
-        
         todo = await this.todoStore.getTodo(req.params.id)
-        if (todo){
-        return baseService.res.status(200).json(todo);
+        if (todo) {
+            return super.ok(res,null,todo)
         }
         else {
-            return baseService.res.status(200).json("No todo found");
+            return super.error(res,"No todo found");
+        }
+    }
+
+    async deleteTodo(res:Response,req: Request) {
+        let todo;
+        todo = await this.todoStore.deleteTodo(req.params.id)
+        if (todo == 1) {
+            return super.ok(res,null,"todo deleted successfully")
+        }
+        else {
+            return super.error(res,"No todo found");
         }
     }
 }

@@ -11,6 +11,6 @@ export interface IUserStore {
 export interface ITodoStore {
     getTodo(req:string ): Promise<Todo>
     addTodo(request: Todo ): Promise<Todo>
-    deleteTodo(id:string) : Promise<Todo>
+    deleteTodo(id:string) : Promise<number>
     getAllTodos():  Promise<Todo[]>
 }
