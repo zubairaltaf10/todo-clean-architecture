@@ -32,14 +32,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.googleUtil = void 0;
-const config = require('../../database/repositories/config.json')['development'];
 const axios_1 = __importDefault(require("axios"));
 const queryString = __importStar(require("query-string"));
+const googleConfig_1 = require("../../http/config/googleConfig");
 class googleUtil {
     static createUrl() {
         const stringifiedParams = queryString.stringify({
-            client_id: config.google_client_id,
-            redirect_uri: config.redirect_uri,
+            client_id: googleConfig_1.googleConfig.google_client_id,
+            redirect_uri: googleConfig_1.googleConfig.redirect_uri,
             scope: [
                 'https://www.googleapis.com/auth/userinfo.email',
                 'https://www.googleapis.com/auth/userinfo.profile',
@@ -48,24 +48,24 @@ class googleUtil {
             access_type: 'offline',
             prompt: 'consent',
         });
-        const googleLoginUrl = `${config.auth_url}${stringifiedParams}`;
+        const googleLoginUrl = `${googleConfig_1.googleConfig.auth_url}${stringifiedParams}`;
         return googleLoginUrl;
     }
     static getAccessToken(code) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data } = yield (0, axios_1.default)({
-                    url: config.google_access_token_url,
+                    url: googleConfig_1.googleConfig.google_access_token_url,
                     method: 'post',
                     data: {
-                        client_id: config.google_client_id,
-                        client_secret: config.google_client_secret,
-                        redirect_uri: config.redirect_uri,
+                        client_id: googleConfig_1.googleConfig.google_client_id,
+                        client_secret: googleConfig_1.googleConfig.google_client_secret,
+                        redirect_uri: googleConfig_1.googleConfig.redirect_uri,
                         grant_type: 'authorization_code',
                         code,
                     },
                 });
-                console.log(data); // { access_token, expires_in, token_type, refresh_token }
+                console.log(data);
                 //  googleAuthService.getGoogleUserInfo(data.access_token)
                 if (data) {
                     let userData = yield googleUtil.getUserInfo(data.access_token);
@@ -80,13 +80,13 @@ class googleUtil {
     static getUserInfo(accessToken) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data } = yield (0, axios_1.default)({
-                url: config.google_user_info_url,
+                url: googleConfig_1.googleConfig.google_user_info_url,
                 method: 'get',
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-            console.log(data); // { id, email, given_name, family_name }
+            console.log(data);
             return data;
         });
     }

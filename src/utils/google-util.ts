@@ -1,16 +1,13 @@
-import { google } from 'googleapis';
-const config = require('../../database/repositories/config.json')['development']
 import axios from 'axios';
 import * as queryString from 'query-string';
-
+import {googleConfig} from '../../http/config/googleConfig'
 
 export class googleUtil {
 
-
     static createUrl(){
         const stringifiedParams = queryString.stringify({
-            client_id: config.google_client_id,
-            redirect_uri: config.redirect_uri,
+            client_id: googleConfig.google_client_id,
+            redirect_uri: googleConfig.redirect_uri,
             scope: [
               'https://www.googleapis.com/auth/userinfo.email',
               'https://www.googleapis.com/auth/userinfo.profile',
@@ -20,24 +17,24 @@ export class googleUtil {
             prompt: 'consent',
           });
           
-          const googleLoginUrl = `${config.auth_url}${stringifiedParams}`;
+          const googleLoginUrl = `${googleConfig.auth_url}${stringifiedParams}`;
           return googleLoginUrl;
     }
 
     static async getAccessToken(code:string) {
         try {
             const { data } = await axios({
-                url: config.google_access_token_url,
+                url: googleConfig.google_access_token_url,
                 method: 'post',
                 data: {
-                    client_id: config.google_client_id,
-                    client_secret: config.google_client_secret,
-                    redirect_uri: config.redirect_uri,
+                    client_id: googleConfig.google_client_id,
+                    client_secret: googleConfig.google_client_secret,
+                    redirect_uri: googleConfig.redirect_uri,
                     grant_type: 'authorization_code',
                     code,
                 },
             });
-            console.log(data); // { access_token, expires_in, token_type, refresh_token }
+            console.log(data);
           //  googleAuthService.getGoogleUserInfo(data.access_token)
 
           if (data){
@@ -53,13 +50,13 @@ export class googleUtil {
 
     static async getUserInfo(accessToken){
         const { data } = await axios({
-            url: config.google_user_info_url,
+            url: googleConfig.google_user_info_url,
             method: 'get',
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
           });
-          console.log(data); // { id, email, given_name, family_name }
+          console.log(data);
           return data;
         }; 
 

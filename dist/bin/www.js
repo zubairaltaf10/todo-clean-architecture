@@ -1,17 +1,18 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const sqlConnection_1 = __importDefault(require("../database/repositories/sqlConnection"));
-const server_1 = require("../http/server");
+const path = require('path');
+const result = require('dotenv').config({ path: path.join(__dirname, '../http/server/.env') });
+if (result.error) {
+    throw result.error;
+}
+console.log(process.env.DB_NAME);
+const sequelize = require('../database/repositories/sqlConnection');
+// import { app } from "../http/server";
 const PORT = 8080;
-server_1.app.listen(PORT, () => {
-    console.log("Server successfully started at port", PORT);
-});
-sqlConnection_1.default
-    .authenticate()
-    .then(() => {
-    console.log('Connection has been established successfully.');
-});
+// app.listen(PORT, () => {
+//     console.log("Server successfully started at port", PORT)
+//   })
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//   console.log('Connection has been established successfully.');
+// })
 //# sourceMappingURL=www.js.map
