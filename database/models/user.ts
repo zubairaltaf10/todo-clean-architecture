@@ -1,5 +1,4 @@
 import { Model,DataTypes, Sequelize } from "sequelize";
-import { Guid } from "guid-typescript";
 import sequelize from "../repositories/sqlConnection";
 
 
@@ -27,7 +26,6 @@ export class UserModel extends Model implements UserAttributes {
 UserModel.init({
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     name: {

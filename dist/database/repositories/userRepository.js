@@ -18,6 +18,14 @@ class UserRepository {
             return response;
         });
     }
+    getUser(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let response = yield user_1.UserModel.findOne({
+                where: { email: req }
+            });
+            return response;
+        });
+    }
 }
 exports.UserRepository = UserRepository;
 //# sourceMappingURL=userRepository.js.map

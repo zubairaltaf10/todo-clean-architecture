@@ -20,16 +20,20 @@ class userService extends baseService_1.baseService {
         // this.req =  req
         // this.res = res
     }
-    createUser(user) {
+    createUser(res, req, user) {
+        const _super = Object.create(null, {
+            ok: { get: () => super.ok },
+            error: { get: () => super.error }
+        });
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let result = yield this.userStore.addUser(user);
                 if (result) {
-                    return baseService_1.baseService.res.status(200).json(result);
+                    return _super.ok.call(this, res, null, "User created successfully");
                 }
             }
             catch (error) {
-                baseService_1.baseService.res.status(200).send(error.message);
+                return _super.error.call(this, res, error.message);
             }
         });
     }

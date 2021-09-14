@@ -6,8 +6,8 @@ class UserStore {
     constructor() {
         this.repository = new userRepository_1.UserRepository();
     }
-    getUserbyEmailOrId(id, email) {
-        throw new Error("Method not implemented.");
+    getUserbyEmail(email) {
+        return this.repository.getUser(email);
     }
     // }
     addUser(request) {

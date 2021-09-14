@@ -7,4 +7,11 @@ export class UserRepository {
         let response = await UserModel.create(user)
         return response
     }
+
+    async getUser(req:string):Promise<User>{
+        let response = await UserModel.findOne({
+            where : {email:req}
+        })
+        return response
+    }
 }

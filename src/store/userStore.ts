@@ -8,8 +8,8 @@ export class UserStore implements IUserStore {
     constructor() {
         this.repository = new UserRepository()
     }
-    getUserbyEmailOrId(id?: string, email?: string): Promise<User> {
-        throw new Error("Method not implemented.");
+    getUserbyEmail(email?: string): Promise<User> {
+       return this.repository.getUser(email)
     }
     // }
     addUser(request: User): Promise<User> {

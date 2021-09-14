@@ -1,6 +1,6 @@
-import { UserModel } from "../../../database/models/user"
+import { UserModel } from "../../database/models/user"
 import { Router, Request, Response, NextFunction } from 'express';
-import todoService from "../../services/todoService";
+import todoService from "../../src/services/todoService";
 
 class TodoController {
     constructor() {

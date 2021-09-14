@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sqlConnection_1 = __importDefault(require("../database/repositories/sqlConnection"));
-const server_1 = require("../src/http/server");
-const PORT = 3000;
+const server_1 = require("../http/server");
+const PORT = 8080;
 server_1.app.listen(PORT, () => {
     console.log("Server successfully started at port", PORT);
 });

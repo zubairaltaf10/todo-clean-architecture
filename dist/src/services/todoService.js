@@ -16,43 +16,52 @@ class todoService extends baseService_1.baseService {
         super();
         this.todoStore = new todoStore_1.todoStore();
     }
-    createTodo(todo) {
+    createTodo(req, res, todo) {
         const _super = Object.create(null, {
-            created: { get: () => super.created }
+            created: { get: () => super.created },
+            error: { get: () => super.error }
         });
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let result = yield this.todoStore.addTodo(todo);
                 if (result) {
-                    return _super.created.call(this, { "response": "todo created successfully" });
+                    return _super.created.call(this, res, { "response": "todo created successfully" });
                 }
             }
             catch (error) {
-                baseService_1.baseService.res.status(200).send(error.message);
+                _super.error.call(this, res, (error.message));
             }
         });
     }
-    getTodobyId(req) {
+    getTodobyId(res, req) {
+        const _super = Object.create(null, {
+            ok: { get: () => super.ok },
+            error: { get: () => super.error }
+        });
         return __awaiter(this, void 0, void 0, function* () {
             let todo;
             todo = yield this.todoStore.getTodo(req.params.id);
             if (todo) {
-                return baseService_1.baseService.res.status(200).json(todo);
+                return _super.ok.call(this, res, null, todo);
             }
             else {
-                return baseService_1.baseService.res.status(200).json("No todo found");
+                return _super.error.call(this, res, "No todo found");
             }
         });
     }
-    deleteTodo(req) {
+    deleteTodo(res, req) {
+        const _super = Object.create(null, {
+            ok: { get: () => super.ok },
+            error: { get: () => super.error }
+        });
         return __awaiter(this, void 0, void 0, function* () {
             let todo;
             todo = yield this.todoStore.deleteTodo(req.params.id);
             if (todo == 1) {
-                return baseService_1.baseService.res.status(200).json("todo deleted successfully");
+                return _super.ok.call(this, res, null, "todo deleted successfully");
             }
             else {
-                return baseService_1.baseService.res.status(400).json("No todo found");
+                return _super.error.call(this, res, "No todo found");
             }
         });
     }

@@ -12,7 +12,6 @@ exports.UserModel = UserModel;
 UserModel.init({
     id: {
         type: sequelize_1.DataTypes.UUID,
-        defaultValue: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,
     },
     name: {
