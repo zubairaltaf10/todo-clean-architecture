@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { User } from '../entities/user';
 import { UserStore } from '../store/userStore';
-import { googleUtil } from '../utils/google-util';
+import googleUtil  from '../utils/google-util';
 import { baseService } from './baseService';
 import { v4 as uuidv4 } from 'uuid';
 import userService from './userService';

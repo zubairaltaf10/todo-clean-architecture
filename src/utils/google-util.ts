@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as queryString from 'query-string';
-import {googleConfig} from '../../http/config/googleConfig'
-
-export class googleUtil {
+import config from '../../http/config/index'
+const {googleConfig} = config
+ class googleUtil {
 
     static createUrl(){
         const stringifiedParams = queryString.stringify({
@@ -34,8 +34,6 @@ export class googleUtil {
                     code,
                 },
             });
-            console.log(data);
-          //  googleAuthService.getGoogleUserInfo(data.access_token)
 
           if (data){
             let userData = await googleUtil.getUserInfo(data.access_token)
@@ -56,8 +54,9 @@ export class googleUtil {
               Authorization: `Bearer ${accessToken}`,
             },
           });
-          console.log(data);
           return data;
         }; 
 
 }
+
+export default googleUtil

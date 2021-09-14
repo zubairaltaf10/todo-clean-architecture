@@ -1,4 +1,4 @@
-import { TodoRepository } from "../../database/repositories/todoRepository";
+import { TodoRepository } from "../database/repositories/todoRepository";
 import { Todo } from "../entities/todo";
 import { ITodoStore } from "./IStore";
 
