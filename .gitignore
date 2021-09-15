@@ -1,3 +1,3 @@
 dist/
 node_modules
-http/server/.env
+.env

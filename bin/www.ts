@@ -1,4 +1,4 @@
-import sequelize from "../src/database/repositories/sqlConnection";
+import sequelize from "../src/persistence/repositories/sqlConnection";
 import { app } from "../http/server";
 import config from '../http/config/index'
 const { express : { express_port } } = config

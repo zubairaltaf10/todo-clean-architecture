@@ -2,7 +2,8 @@ import axios from 'axios';
 import * as queryString from 'query-string';
 import config from '../../http/config/index'
 const {googleConfig} = config
- class googleUtil {
+ 
+class googleCredentials {
 
     static createUrl(){
         const stringifiedParams = queryString.stringify({
@@ -36,7 +37,7 @@ const {googleConfig} = config
             });
 
           if (data){
-            let userData = await googleUtil.getUserInfo(data.access_token)
+            let userData = await googleCredentials.getUserInfo(data.access_token)
             return userData;
           }
 
@@ -59,4 +60,4 @@ const {googleConfig} = config
 
 }
 
-export default googleUtil
+export default googleCredentials

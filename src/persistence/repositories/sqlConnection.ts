@@ -3,12 +3,12 @@ import config from '../../../http/config/index'
 const {database} = config
 
 const sequelize = new Sequelize(
-  database.database,
-  database.username,
-  database.password,
+  database.DB_NAME,
+  database.DB_USERNAME,
+  database.DB_PASSWORD,
   {
-    host: database.host,
-    port: database.port,
+    host: database.DB_HOST,
+    port: database.DB_PORT,
     dialect: "mysql",
   },
 );

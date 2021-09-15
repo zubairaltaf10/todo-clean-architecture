@@ -1,4 +1,4 @@
-import { UserRepository } from "../database/repositories/userRepository";
+import { UserRepository } from "../persistence/repositories/userRepository";
 import { User } from "../entities/user";
 import { IUserStore } from "./IStore";
 
