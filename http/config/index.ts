@@ -3,7 +3,7 @@ dotenv.config();
 
 import database from "./database";
 import express from "./express";
-import googleConfig from "./google-config";
+import googleConfig from "./googleConfig";
 
 
 export default {express,database,googleConfig}
