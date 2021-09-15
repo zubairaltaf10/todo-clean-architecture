@@ -2,7 +2,7 @@ import { Todo } from "../entities/todo";
 import { User } from "../entities/user";
 
 export interface IUserStore {
-    getUserbyEmailOrId(id? : string,email? : string ): Promise<User>
+    getUserbyEmail(email? : string ): Promise<User>
     addUser(request: User ): Promise<User>
     deleteUser(id:string) : Promise<User>
     getAll():  Promise<User[]>

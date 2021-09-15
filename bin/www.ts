@@ -1,14 +1,17 @@
-import sequelize from "../database/repositories/sqlConnection";
-import { app, baserouter } from "../src/http/server";
-import { baseService } from "../src/services/baseService";
+import sequelize from "../src/persistence/repositories/sqlConnection";
+import { app } from "../http/server";
+import config from '../http/config/index'
+const { express : { express_port } } = config
 
-const PORT = 3000
-app.listen(PORT, () => {
-    console.log("Server successfully started at port", PORT)
-  })
+app.listen(express_port, () => {
+  console.log("Server successfully started at port", express_port)
+})
 
 sequelize
   .authenticate()
   .then(() => {
-  console.log('Connection has been established successfully.');
-})
+    console.log('Connection has been established successfully.');
+  })
+  .catch((err)=>{
+    console.log(err)
+  })

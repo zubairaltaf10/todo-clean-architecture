@@ -34,4 +34,9 @@ export abstract class baseService {
     public error(res: Response,err:string | {}): Response<any> {
         return res.status(httpStatus.error).json(err);
     }
+
+    public redirect(res: Response,url:string): Response<any> {
+        return res.redirect(url);
+    }
+
 }

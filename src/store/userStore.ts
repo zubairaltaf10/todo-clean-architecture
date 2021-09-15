@@ -1,4 +1,4 @@
-import { UserRepository } from "../../database/repositories/userRepository";
+import { UserRepository } from "../persistence/repositories/userRepository";
 import { User } from "../entities/user";
 import { IUserStore } from "./IStore";
 
@@ -8,8 +8,8 @@ export class UserStore implements IUserStore {
     constructor() {
         this.repository = new UserRepository()
     }
-    getUserbyEmailOrId(id?: string, email?: string): Promise<User> {
-        throw new Error("Method not implemented.");
+    getUserbyEmail(email?: string): Promise<User> {
+       return this.repository.getUser(email)
     }
     // }
     addUser(request: User): Promise<User> {
