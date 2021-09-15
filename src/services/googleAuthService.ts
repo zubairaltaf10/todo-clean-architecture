@@ -1,31 +1,26 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { User } from '../entities/user';
 import { UserStore } from '../store/userStore';
-import { googleUtil } from '../utils/google-util';
+import googleCredentials  from '../utils/GoogleCredentials';
 import { baseService } from './baseService';
 import { v4 as uuidv4 } from 'uuid';
-import userService from './userService';
 
 
 class googleAuthService extends baseService {
 
     userStore: UserStore
-    // req:Request
-    // res:Response
     constructor() {
         super()
         this.userStore = new UserStore()
     }
 
-
     generateUrl(req,res){
-        let url = googleUtil.createUrl()
+        let url = googleCredentials.createUrl()
         super.redirect(res,url)
     }
 
     async connectToGoogle(req, res) {
         try {
-            let result = await googleUtil.getAccessToken(req.query.code)
+            let result = await googleCredentials.getAccessToken(req.query.code)
             let alreadyExist = await this.userStore.getUserbyEmail(result.email)
             if (result && !alreadyExist) {
                 this.userStore.addUser({
