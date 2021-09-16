@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { User } from '../entities/user';
+import UserEntity from '../entities/UserEntity';
 import { UserStore } from '../store/userStore';
 import { baseService } from './baseService';
 
@@ -16,7 +17,8 @@ class userService extends baseService {
     }
     async createUser(res:Response,req:Request,user: User) {
         try {
-            let result = await this.userStore.addUser(user)
+           let userData = UserEntity.create(user)
+            let result = await this.userStore.addUser(userData)
             if (result) {
                 return super.ok(res,null,"User created successfully");
             }

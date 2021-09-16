@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { Todo } from '../entities/todo';
+import TodoEntity from '../entities/TodoEntity';
 import { User } from '../entities/user';
 import { todoStore } from '../store/todoStore';
 import { baseService } from './baseService';
@@ -13,7 +14,8 @@ class todoService extends baseService {
     }
     async createTodo(req:Request,res:Response,todo: Todo) {
         try {
-            let result = await this.todoStore.addTodo(todo)
+            let data = TodoEntity.create(todo)
+            let result = await this.todoStore.addTodo(data)
             if (result) {
                 return super.created(res,{"response": "todo created successfully"})
             }
