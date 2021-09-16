@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { UniqueEntityID } from '../utils/UniqueEntityId';
 import { Entity } from './Entity';
 
 
@@ -8,25 +9,23 @@ interface ITodo {
     description: string,
 }
 
-class TodoEntity extends Entity<ITodo> {
+class TodoEntity  {
 
     id : string 
     title : string
     description : string
 
     private constructor (props: ITodo, id?: string) {
-       super(props,id)
-        this.id = this._id
-        this.title = this.props.title
-        this.description = this.props.description
+        this.id = id
+        this.title = props.title
+        this.description = props.description
     }  
 
-    public static create(props: ITodo, todoId?: string): ITodo {
+    public static create(props: ITodo, todoId?): TodoEntity {
+        if (!todoId) {
+            todoId = new UniqueEntityID();
+       }
         return new TodoEntity(props,todoId)
-    }
-
-    public static response(){
-        
     }
 }
 

@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { UniqueEntityID } from '../utils/UniqueEntityId';
 import { Entity } from './Entity';
 
 interface IUser {
@@ -8,7 +8,7 @@ interface IUser {
     password: string
 }
 
-class UserEntity extends Entity<IUser> {
+class UserEntity {
 
     id : string 
     name : string
@@ -17,14 +17,16 @@ class UserEntity extends Entity<IUser> {
 
     private constructor (props: IUser, id?: string) {
        
-        super(props,id)
-        this.id = this._id
-        this.name = this.props.name
-        this.email = this.props.email
-        this.password = this.props.password
+        this.id = id
+        this.name = props.name
+        this.email = props.email
+        this.password = props.password
     }  
 
-    public static create(props: IUser, userId?: string): IUser {
+    public static create(props: IUser, userId?): UserEntity {
+        if (!userId) {
+            userId = new UniqueEntityID();
+       }
         return new UserEntity(props,userId)
     }
 }
