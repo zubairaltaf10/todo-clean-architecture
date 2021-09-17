@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "googleapis": "^85.0.0",
     "guid-typescript": "^1.0.9",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.0",
     "pug": "^3.0.2",
     "query-string": "^7.0.1",

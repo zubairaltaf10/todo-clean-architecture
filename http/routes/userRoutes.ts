@@ -8,12 +8,4 @@ userRouter.post('/add',UsersMiddleware.validateRequiredUserBodyFields, UserContr
 userRouter.get('/google', UserController.registerWithGoogle)
 userRouter.get('/callback', UserController.googleCallback)
 
-
-// userRouter.put('/:id', () => {
-// })
-// userRouter.delete('/:id', () => {
-// })
-// userRouter.post('/', () => {
-// })
-
 export default userRouter

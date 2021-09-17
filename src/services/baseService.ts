@@ -19,16 +19,16 @@ export abstract class baseService {
         next()
     }
 
-    public ok(res: Response, req?: Request | Request[],message?:string | {}): Response<any> {
-        if (message) {
-            return res.status(httpStatus.success).json(message);
+    public ok(res: Response,data:{} | [],message?:string | {}): Response<any> {
+        if (data) {
+            return res.status(httpStatus.success).json({data,message});
         } else {
             return res.status(httpStatus.success);
         }
     }
 
-    public created(res: Response,message: string | {}): Response<any> {
-        return res.status(httpStatus.created).json(message);
+    public created(res: Response,status:number | string = 200,message: string | {}, data : {} | []): Response<any> {
+        return res.status(httpStatus.created).json({status,message,data});
     }
 
     public error(res: Response,err:string | {}): Response<any> {
