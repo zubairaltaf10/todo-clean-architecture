@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { UniqueEntityID } from '../utils/UniqueEntityId';
-import { Entity } from './Entity';
+import  Entity  from './Entity';
 
 
 interface ITodo {
@@ -25,7 +25,7 @@ class TodoEntity  {
         if (!todoId) {
             todoId = new UniqueEntityID();
        }
-        return new TodoEntity(props,todoId)
+        return new TodoEntity(props,todoId['_id'])
     }
 }
 

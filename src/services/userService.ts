@@ -7,20 +7,18 @@ import { baseService } from './baseService';
 class userService extends baseService {
 
     userStore: UserStore
-    // req:Request
-    // res:Response
+
     constructor() {
         super()
         this.userStore = new UserStore()
-        // this.req =  req
-        // this.res = res
     }
+
     async createUser(res:Response,req:Request,user: User) {
         try {
-           let userData = UserEntity.create(user)
-            let result = await this.userStore.addUser(userData)
+           const userEntity = UserEntity.create(user)
+            const result = await this.userStore.addUser(userEntity)
             if (result) {
-                return super.ok(res,null,"User created successfully");
+                return super.created(res,"success",result,"User created successfully");
             }
         }
         catch (error) {

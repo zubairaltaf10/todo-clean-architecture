@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import Entity from '../entities/Entity';
 import { Todo } from '../entities/todo';
 import TodoEntity from '../entities/TodoEntity';
 import { User } from '../entities/user';
@@ -14,10 +15,10 @@ class todoService extends baseService {
     }
     async createTodo(req:Request,res:Response,todo: Todo) {
         try {
-            let data = TodoEntity.create(todo)
-            let result = await this.todoStore.addTodo(data)
+            const todoEntity = TodoEntity.create(todo)
+            const result = await this.todoStore.addTodo(todoEntity)
             if (result) {
-                return super.created(res,{"response": "todo created successfully"})
+                return super.created(res,'success',"User created Successfully",result)
             }
         }
         catch (error) {
@@ -26,10 +27,9 @@ class todoService extends baseService {
     }
 
     async getTodobyId(res:Response,req: Request) {
-        let todo;
-        todo = await this.todoStore.getTodo(req.params.id)
+        const todo = await this.todoStore.getTodo(req.params.id)
         if (todo) {
-            return super.ok(res,null,todo)
+            return super.ok(res,todo)
         }
         else {
             return super.error(res,"No todo found");
@@ -37,8 +37,7 @@ class todoService extends baseService {
     }
 
     async deleteTodo(res:Response,req: Request) {
-        let todo;
-        todo = await this.todoStore.deleteTodo(req.params.id)
+       const todo = await this.todoStore.deleteTodo(req.params.id)
         if (todo == 1) {
             return super.ok(res,null,"todo deleted successfully")
         }

@@ -1,5 +1,4 @@
 import { UniqueEntityID } from '../utils/UniqueEntityId';
-import { Entity } from './Entity';
 
 interface IUser {
     id: string
@@ -27,7 +26,7 @@ class UserEntity {
         if (!userId) {
             userId = new UniqueEntityID();
        }
-        return new UserEntity(props,userId)
+        return new UserEntity(props,userId['_id'])
     }
 }
 
