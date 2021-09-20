@@ -1,29 +1,42 @@
 import express from 'express';
-// import userService from '../services/users.service';
-import debug from 'debug';
-
+import jwt from 'jsonwebtoken'
 class UsersMiddleware {
 
     async validateRequiredUserBodyFields(req: express.Request, res: express.Response, next: express.NextFunction) {
         if (req.body && req.body.name && req.body.email && req.body.password) {
             next();
         } else {
-            res.status(400).send({error: `Missing required fields`});
+            res.status(400).send({ error: `Missing required fields` });
         }
-    }
-
-    async validateUserExists(req: express.Request, res: express.Response, next: express.NextFunction) {
-        // const user = await userService.readById(req.params.userId);
-        // if (user) {
-        //     next();
-        // } else {
-        //     res.status(404).send({error: `User ${req.params.userId} not found`});
-        // }
     }
 
     async extractUserId(req: express.Request, res: express.Response, next: express.NextFunction) {
         req.body.id = req.params.userId;
         next();
+    }
+
+    validateTokenMiddleware(req: express.Request, res: express.Response, next: express.NextFunction) {
+        try {
+
+            if (req.headers.authorization) {
+                const token = req.headers.authorization
+                jwt.verify(token, process.env.JWT_SECRET)
+                next()
+            }
+            else {
+                res.status(401).json({
+                    error: `Authentication error. Token required.`,
+                    status: 401
+                });
+            }
+
+        }
+        catch (error) {
+            res.status(500).json({
+                error: error.message,
+                status: 500
+            });
+        }
     }
 }
 

@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import { User } from '../entities/user';
 import UserEntity from '../entities/UserEntity';
 import { UserStore } from '../store/userStore';
+import { createJWT } from '../utils/JWTUtil';
 import { baseService } from './baseService';
 
 class userService extends baseService {
@@ -15,6 +16,7 @@ class userService extends baseService {
 
     async createUser(res:Response,req:Request,user: User) {
         try {
+            let token = createJWT(req.body.name)
            const userEntity = UserEntity.create(user)
             const result = await this.userStore.addUser(userEntity)
             if (result) {
