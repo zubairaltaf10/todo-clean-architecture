@@ -2,7 +2,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import { User } from '../entities/user';
 import UserEntity from '../entities/UserEntity';
 import { UserStore } from '../store/userStore';
-import { createJWT } from '../utils/JWTUtil';
+import { createJWT } from '../utils/CreateJWT';
 import { baseService } from './baseService';
 
 class userService extends baseService {

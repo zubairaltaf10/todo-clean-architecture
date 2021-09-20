@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken'
+
 class UsersMiddleware {
 
     async validateRequiredUserBodyFields(req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -17,22 +18,19 @@ class UsersMiddleware {
 
     validateTokenMiddleware(req: express.Request, res: express.Response, next: express.NextFunction) {
         try {
-
             if (req.headers.authorization) {
                 const token = req.headers.authorization
                 jwt.verify(token, process.env.JWT_SECRET)
                 next()
+                return
             }
-            else {
-                res.status(401).json({
-                    error: `Authentication error. Token required.`,
-                    status: 401
-                });
-            }
-
+            return res.status(401).json({
+                error: `Authentication error. Token required.`,
+                status: 401
+            });
         }
         catch (error) {
-            res.status(500).json({
+            return res.status(500).json({
                 error: error.message,
                 status: 500
             });
