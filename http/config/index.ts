@@ -1,9 +1,8 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import database from "./database";
 import express from "./express";
-import googleConfig from "./GoogleConfig";
-
-
+import googleConfig from "./googleConfig";
+import database from './database.js'
+console.log(database)
 export default {express,database,googleConfig}

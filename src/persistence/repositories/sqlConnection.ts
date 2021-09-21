@@ -1,14 +1,14 @@
 import { Sequelize } from 'sequelize'
 import config from '../../../http/config/index'
 const {database} = config
-
+console.log(database.database)
 const sequelize = new Sequelize(
-  database.DB_NAME,
-  database.DB_USERNAME,
-  database.DB_PASSWORD,
+  database['development'].database,
+  database['development'].username,
+  database['development'].password,
   {
-    host: database.DB_HOST,
-    port: database.DB_PORT,
+    host: database['development'].host,
+    port: database['development'].port,
     dialect: "mysql",
   },
 );
