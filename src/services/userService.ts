@@ -20,7 +20,7 @@ class userService extends baseService {
     async createUser(res: Response, req: Request, user: User) {
         try {
             const userEntity = UserEntity.create(user)
-            const createUserCommand = new CreateUserCommand(userEntity.name,userEntity.email,userEntity.password);
+            const createUserCommand = new CreateUserCommand(userEntity);
             var result = await commandBus.handle(createUserCommand);
             console.log('Result:', result);
             // const result = await userStore.addUser(userEntity)

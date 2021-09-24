@@ -1,14 +1,19 @@
 import {Command} from "simple-command-bus"
+import { User } from "../../src/entities/user";
 
 export class CreateUserCommand extends Command {
-    name : string
-    email : string
-    password: string
 
-  constructor(name, email, password) {
+  user : User
+  id : string
+  name : string
+  email : string
+  password : string
+  
+  constructor(user) {
     super();
-    this.name = name;
-    this.email = email;
-    this.password = password;
+    this.id = user.id
+    this.name = user.name
+    this.email = user.email
+    this.password = user.password
   }
 }

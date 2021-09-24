@@ -22,32 +22,7 @@ sequelize
   .catch((err) => {
     console.log(err)
   })
-//   var commandHandlerMiddleware = new CommandHandlerMiddleware(
-//     new ClassNameExtractor(),
-//     new InMemoryLocator({ CreateUserHandler: new CreateUserHandler() }),
-//     new HandleInflector()
-// );
 
-// // Command bus instance
-// var commandBus = new CommandBus(
-//     commandHandlerMiddleware
-// );
-
-// const createAccountCommand = new CreateUserCommand('John', 'Doe','dsadsa');
-// var result = commandBus. handle(createAccountCommand);
-// console.log('Result:', result);
-// export default commandBus
-// class CreateUserCommand extends Command {
-//   firstName
-//   lastName
-//   constructor(firstName, lastName) {
-//       super();
-//       this.firstName = firstName;
-//       this.lastName = lastName;
-//   }
-// }
-
-// Command bus instance
 export const commandBus = new CommandBus([
   commandHandlerMiddleware
 ]);
