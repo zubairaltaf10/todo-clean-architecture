@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '../utils/UniqueEntityId';
+import { UniqueEntityID } from '../../../Application/utils/UniqueEntityId';
 
 interface IUser {
     id: string

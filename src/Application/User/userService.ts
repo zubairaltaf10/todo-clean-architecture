@@ -1,12 +1,12 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { commandBus } from '../../bin/www';
-import { CreateUserCommand } from '../../http/commands/CreateUserCommand';
-import { User } from '../entities/user';
-import UserEntity from '../entities/UserEntity';
-import { IUserStore } from '../store/IStore';
-import userStore from '../store/userStore';
-import UserStore from '../store/userStore';
-import { baseService } from './baseService';
+import { commandBus } from '../../../bin/www';
+import { CreateUserCommand } from '../../../http/commands/CreateUserCommand';
+import { User } from '../../Domain/Entities/User/user';
+import UserEntity from '../../Domain/Entities/User/UserEntity';
+import { IUserStore } from '../../infrastructure/store/IStore';
+import userStore from '../../infrastructure/store/userStore';
+import UserStore from '../../infrastructure/store/userStore';
+import { baseService } from '../Base/baseService';
 
 class userService extends baseService {
 

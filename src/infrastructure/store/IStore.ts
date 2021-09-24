@@ -1,5 +1,5 @@
-import { Todo } from "../entities/todo";
-import { User } from "../entities/user";
+import { Todo } from "../../Domain/Entities/Todo/todo";
+import { User } from "../../Domain/Entities/User/user";
 
 export interface IUserStore {
     getUserbyEmail(email? : string ): Promise<User>

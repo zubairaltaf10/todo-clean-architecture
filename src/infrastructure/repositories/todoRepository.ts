@@ -1,6 +1,5 @@
-import { Todo } from "../../entities/todo";
-import { User } from "../../entities/user";
-import { TodoModel } from "../models/todo";
+import { Todo } from "../../Domain/Entities/Todo/todo";
+import { TodoModel } from "../Database/models/todo";
 
 export class TodoRepository {
 

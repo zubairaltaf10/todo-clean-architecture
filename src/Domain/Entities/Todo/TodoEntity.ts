@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { UniqueEntityID } from '../utils/UniqueEntityId';
-import  Entity  from './Entity';
+import { UniqueEntityID } from '../../../Application/utils/UniqueEntityId';
 
 
 interface ITodo {

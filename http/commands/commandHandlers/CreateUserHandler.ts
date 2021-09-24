@@ -1,5 +1,5 @@
-import userService from "../../../src/services/userService"
-import userStore from "../../../src/store/userStore";
+import userService from "../../../src/Application/User/userService"
+import userStore from "../../../src/infrastructure/store/userStore";
 
 export class CreateUserHandler {
 

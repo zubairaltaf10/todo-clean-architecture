@@ -1,5 +1,5 @@
-import { TodoRepository } from "../persistence/repositories/todoRepository";
-import { Todo } from "../entities/todo";
+import { TodoRepository } from "../repositories/todoRepository";
+import { Todo } from "../../Domain/Entities/Todo/todo";
 import { ITodoStore } from "./IStore";
 
 

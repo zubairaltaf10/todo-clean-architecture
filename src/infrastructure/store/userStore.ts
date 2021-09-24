@@ -1,5 +1,5 @@
-import { UserRepository } from "../persistence/repositories/userRepository";
-import { User } from "../entities/user";
+import { UserRepository } from "../repositories/userRepository";
+import { User } from "../../Domain/Entities/User/user";
 import { IUserStore } from "./IStore";
 
 class UserStore implements IUserStore {

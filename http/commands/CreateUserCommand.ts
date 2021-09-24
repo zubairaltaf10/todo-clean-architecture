@@ -1,5 +1,5 @@
 import {Command} from "simple-command-bus"
-import { User } from "../../src/entities/user";
+import { User } from "../../src/Domain/Entities/User/user";
 
 export class CreateUserCommand extends Command {
 
@@ -8,7 +8,7 @@ export class CreateUserCommand extends Command {
   name : string
   email : string
   password : string
-  
+
   constructor(user) {
     super();
     this.id = user.id

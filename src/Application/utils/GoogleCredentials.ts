@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as queryString from 'query-string';
-import config from '../../http/config/index'
+import config from '../../../http/config/index'
 const {googleConfig} = config
  
 class googleCredentials {

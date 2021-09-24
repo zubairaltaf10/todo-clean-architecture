@@ -1,5 +1,5 @@
 import { Model,DataTypes, Sequelize } from "sequelize";
-import sequelize from "../repositories/sqlConnection";
+import sequelize from "../sqlConnection";
 
 
 export interface UserAttributes {

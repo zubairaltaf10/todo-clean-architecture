@@ -1,10 +1,10 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import Entity from '../entities/Entity';
-import { Todo } from '../entities/todo';
-import TodoEntity from '../entities/TodoEntity';
-import { User } from '../entities/user';
-import { todoStore } from '../store/todoStore';
-import { baseService } from './baseService';
+import Entity from '../../Domain/Entities/User/UserEntity';
+import { Todo } from '../../Domain/Entities/Todo/todo';
+import TodoEntity from '../../Domain/Entities/Todo/TodoEntity';
+import { User } from '../../Domain/Entities/User/user';
+import { todoStore } from '../../infrastructure/store/todoStore';
+import { baseService } from '../Base/baseService';
 
 class todoService extends baseService {
 

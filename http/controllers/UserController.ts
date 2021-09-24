@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import googleAuthService from '../../src/services/googleAuthService';
-import  userService  from "../../src/services/userService";
+import googleAuthService from '../../src/Application/Auth/googleAuthService';
+import  userService  from "../../src/Application/User/userService";
 
 
 class UserController {

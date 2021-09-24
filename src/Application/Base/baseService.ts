@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { httpStatus } from './constants/httpStatus';
+import { httpStatus } from '../utils/httpStatus';
 
 export abstract class baseService {
 
