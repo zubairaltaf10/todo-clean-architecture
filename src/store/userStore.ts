@@ -2,7 +2,7 @@ import { UserRepository } from "../persistence/repositories/userRepository";
 import { User } from "../entities/user";
 import { IUserStore } from "./IStore";
 
-export class UserStore implements IUserStore {
+class UserStore implements IUserStore {
 
     repository: UserRepository
     constructor() {
@@ -23,3 +23,5 @@ export class UserStore implements IUserStore {
     }
 
 }
+
+export default new UserStore()

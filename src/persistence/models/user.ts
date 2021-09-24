@@ -43,6 +43,6 @@ UserModel.init({
     timestamps: true,
     sequelize: sequelize,
     paranoid: true,
-    modelName:'users'
+    modelName:'Users'
   })
   

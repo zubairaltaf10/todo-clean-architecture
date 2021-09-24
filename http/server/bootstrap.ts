@@ -25,6 +25,5 @@ app.use('/register',(req,res)=>res.render('auth/register-form'))
 app.use('/api', baserouter)
 
 
-
 export default app
 

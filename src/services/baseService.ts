@@ -1,6 +1,4 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { User } from '../entities/user';
-import { UserStore } from '../store/userStore';
 import { httpStatus } from './constants/httpStatus';
 
 export abstract class baseService {

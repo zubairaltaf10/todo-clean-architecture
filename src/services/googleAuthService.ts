@@ -1,16 +1,17 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { UserStore } from '../store/userStore';
+import  UserStore  from '../store/userStore';
 import googleCredentials  from '../utils/GoogleCredentials';
 import { baseService } from './baseService';
 import { v4 as uuidv4 } from 'uuid';
+import { IUserStore } from '../store/IStore';
 
 
 class googleAuthService extends baseService {
 
-    userStore: UserStore
+    userStore: IUserStore
     constructor() {
         super()
-        this.userStore = new UserStore()
+     
     }
 
     generateUrl(req,res){
