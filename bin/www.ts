@@ -8,7 +8,7 @@ import {
 } from "simple-command-bus"
 import { CreateUserHandler } from "../http/commands/commandHandlers/CreateUserHandler";
 import { commandHandlerMiddleware } from "../http/middlewares/CommandHandlerMiddleware";
-import { CreateUserCommand } from "../http/commands/CreateUserCommand";
+import { CreateUserCommand } from "../http/commands/User/CreateUserCommand";
 
 app.listen(express_port, () => {
   console.log("Server successfully started at port", express_port)
