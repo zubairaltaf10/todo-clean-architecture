@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import Email from '../../../../http/config/Email';
 
 class EmailService {
   protected transporter: nodemailer.Transporter;
@@ -11,15 +12,15 @@ class EmailService {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'zubair.altaf@carbonteq.com',
-        pass: 'iamzubair'
+        user: Email.NODE_MAILER_USERNAME,
+        pass: Email.NODE_MAILER_PASSWORD
       }
     });
   }
 
   sendMail(to: string, subject: string, content: string) {
     const options = {
-      from: 'zubair.altaf@carbonteq.com',
+      from: Email.NODE_MAILER_USERNAME,
       to: to,
       subject: subject,
       text: content
