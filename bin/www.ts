@@ -1,17 +1,15 @@
-import sequelize from "../src/infrastructure/Database/sqlConnection";
+import sequelize from "../src/infrastructure/database/SqlConnection";
 import { app } from "../http/server";
 import config from '../http/config/index'
-const { express: { express_port } } = config
+const { express: { EXPRESS_PORT } } = config
 import {
   Command,
   CommandBus
 } from "simple-command-bus"
-import { CreateUserHandler } from "../http/commands/commandHandlers/CreateUserHandler";
 import { commandHandlerMiddleware } from "../http/middlewares/CommandHandlerMiddleware";
-import { CreateUserCommand } from "../http/commands/User/CreateUserCommand";
 
-app.listen(express_port, () => {
-  console.log("Server successfully started at port", express_port)
+app.listen(EXPRESS_PORT, () => {
+  console.log("Server successfully started at port", EXPRESS_PORT)
 })
 
 sequelize

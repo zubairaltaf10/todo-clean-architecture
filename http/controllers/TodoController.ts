@@ -1,21 +1,20 @@
-import { UserModel } from "../../src/infrastructure/Database/models/user"
+import { UserModel } from "../../src/infrastructure/database/models/User"
 import { Router, Request, Response, NextFunction } from 'express';
-import todoService from "../../src/Application/Todo/todoService";
-
+import TodoService from "../../src/application/Todo/TodoService";
 class TodoController {
-    constructor() {
-        //  this.register = this.register.bind(this);
-    }
-
+   
     async createTODO(req: Request, res: Response, next: NextFunction) {
 
-       return todoService.createTodo(req,res,req.body)
+       return TodoService.createTodo(req,res,req.body)
     }
 
     async getTODO(req: Request, res: Response, next: NextFunction) {
-        return todoService.getTodobyId(res,req)
+        return TodoService.getTodobyId(res,req)
     }
 
+    async getTODOS(req:Request,res: Response , next: NextFunction){
+        return TodoService.getAllTodos(res,req)
+    }
 
     async editTODO(req: Request, res: Response, next: NextFunction):Promise<void> {
         // try {
@@ -30,7 +29,7 @@ class TodoController {
     }
 
     async deleteTODO(req: Request, res: Response, next: NextFunction) {
-       return todoService.deleteTodo(res,req)
+       return TodoService.deleteTodo(res,req)
 
     }
 

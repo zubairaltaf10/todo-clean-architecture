@@ -1,5 +1,5 @@
-import { Todo } from "../../Domain/Entities/Todo/todo";
-import { User } from "../../Domain/Entities/User/user";
+import { Todo } from "../../domain/Entities/Todo/todo";
+import { User } from "../../domain/Entities/User/user";
 
 export interface IUserStore {
     getUserbyEmail(email? : string ): Promise<User>
@@ -12,5 +12,5 @@ export interface ITodoStore {
     getTodo(req:string ): Promise<Todo>
     addTodo(request: Todo ): Promise<Todo>
     deleteTodo(id:string) : Promise<number>
-    getAllTodos():  Promise<Todo[]>
+    getAllTodos(limit:number,page:number):  Promise<Todo[]>
 }

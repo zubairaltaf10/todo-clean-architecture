@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import todoRouter from '../routes/todoRoutes'
-import userRouter from '../routes/userRoutes'
+import todoRouter from '../routes/TodoRoutes'
+import userRouter from '../routes/UserRoutes'
 
 const baserouter = Router()
 

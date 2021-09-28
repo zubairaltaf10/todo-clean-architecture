@@ -1,6 +1,6 @@
 import { Command } from "simple-command-bus"
-import { UniqueEntityID } from "../../../src/Application/utils/UniqueEntityId";
-import { User } from "../../../src/Domain/Entities/User/user";
+import { UniqueEntityID } from "../../../src/application/utils/UniqueEntityId";
+import { User } from "../../../src/domain/Entities/User/user";
 
 export class CreateUserCommand extends Command {
 
