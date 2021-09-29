@@ -8,8 +8,9 @@ import { EventEmitter } from 'events';
 import { EventConstants } from '../utils/EventConstants';
 import { BaseService } from '../Base/BaseService';
 import { CreateUserCommand } from '../../../http/commands/User/CreateUserCommand';
+import { IUserService } from './IUserService';
 
-class UserService extends BaseService {
+class UserService extends BaseService implements IUserService {
 
     userStore: IUserStore
 
@@ -18,7 +19,7 @@ class UserService extends BaseService {
         CreateUserCommand
     }
 
-    async createUser(res: Response, req: Request, user: User) {
+    async createUser(res: Response, user: User) {
 
         try {
             const userEntity = UserEntity.create(user)

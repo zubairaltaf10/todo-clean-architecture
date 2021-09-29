@@ -5,15 +5,16 @@ import TodoEntity from '../../domain/Entities/Todo/TodoEntity';
 import { User } from '../../domain/Entities/User/user';
 import { todoStore } from '../../infrastructure/store/TodoStore';
 import { BaseService } from '../Base/BaseService';
+import { ITodoService } from './ITodoService';
 
-class TodoService extends BaseService {
+class TodoService extends BaseService implements ITodoService{
 
     todoStore: todoStore
     constructor() {
         super();
         this.todoStore = new todoStore()
     }
-    async createTodo(req:Request,res:Response,todo: Todo) {
+    async createTodo(res:Response,todo: Todo) {
         try {
             const todoEntity = TodoEntity.create(todo)
             const result = await this.todoStore.addTodo(todoEntity)

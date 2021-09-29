@@ -5,7 +5,7 @@ import  userService  from "../../src/application/User/UserService";
 
 class UserController {
     register(req: Request, res: Response, next: NextFunction) {
-        return userService.createUser( res,req,req.body)    
+        return userService.createUser( res,req.body)    
     }
     googleCallback(req,res,code){
      GoogleAuthService.connectToGoogle(req,res)
