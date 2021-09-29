@@ -3,7 +3,7 @@ import Entity from '../../domain/Entities/User/UserEntity';
 import { Todo } from '../../domain/Entities/Todo/todo';
 import TodoEntity from '../../domain/Entities/Todo/TodoEntity';
 import { User } from '../../domain/Entities/User/user';
-import { todoStore } from '../../infrastructure/store/TodoStore';
+import { todoStore } from '../../infrastructure/database/store/TodoStore';
 import { BaseService } from '../Base/BaseService';
 import { ITodoService } from './ITodoService';
 

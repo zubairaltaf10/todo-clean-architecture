@@ -1,5 +1,5 @@
-import { UserRepository } from "../repositories/UserRepository";
-import { User } from "../../domain/Entities/User/user";
+import { UserRepository } from "../../repositories/UserRepository";
+import { User } from "../../../domain/Entities/User/user";
 import { IUserStore } from "./IStore";
 
 class UserStore implements IUserStore {

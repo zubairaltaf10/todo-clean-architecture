@@ -1,9 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import  UserStore  from '../../infrastructure/store/UserStore';
+import  UserStore  from '../../infrastructure/database/store/UserStore';
 import googleCredentials  from '../utils/GoogleCredentials';
 import { BaseService } from '../Base/BaseService';
 import { v4 as uuidv4 } from 'uuid';
-import { IUserStore } from '../../infrastructure/store/IStore';
+import { IUserStore } from '../../infrastructure/database/store/IStore';
 
 class GoogleAuthService extends BaseService {
 
