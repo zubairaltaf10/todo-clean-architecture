@@ -1,5 +1,5 @@
 import { User } from "../../Domain/Entities/User/User";
-import { UserModel } from "../Database/models/User";
+import { UserModel } from "../Database/Models/User";
 
 export class UserRepository {
 

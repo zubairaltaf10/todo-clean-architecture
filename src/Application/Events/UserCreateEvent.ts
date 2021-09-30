@@ -6,16 +6,16 @@ class UserCreatedEvent extends EventBus {
 
     constructor(){
         super()
-        this.HandleEvent()
+        this.handleEvent()
     }
 
-    protected async HandleEvent() {
+    protected async handleEvent() {
         this.on(EventConstants.userCreated,((user)=>{
             EmailService.sendMail(user.email,"welcome email",'welcome')
         }))
     }
 
-    public Dispatch(eventName:EventConstants,data?:any){
+    public dispatch(eventName:EventConstants,data?:any){
         this.emit(eventName,data)
     }
 }

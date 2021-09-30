@@ -1,14 +1,13 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import {  Response } from 'express';
 import { commandBus } from '../../../Bin/www';
 import { User } from '../../Domain/Entities/User/User';
 import UserEntity from '../../Domain/Entities/User/UserEntity';
 import { IUserStore } from '../../Infrastructure/Database/Store/IStore';
 import UserCreatedEvent from '../Events/UserCreateEvent';
-import { EventEmitter } from 'events';
 import { EventConstants } from '../Utils/EventConstants';
-import { BaseService } from '../Base/BaseService';
 import { CreateUserCommand } from '../../../Http/Commands/User/CreateUserCommand';
 import { IUserService } from './IUserService';
+import { BaseService } from '../Base/BaseService';
 
 class UserService extends BaseService implements IUserService {
 
@@ -27,7 +26,7 @@ class UserService extends BaseService implements IUserService {
             const result = await commandBus.handle(createUserEntity);
             if (!result) return super.error(res, result);
 
-            UserCreatedEvent.Dispatch(EventConstants.userCreated, userEntity)
+            UserCreatedEvent.dispatch(EventConstants.userCreated, userEntity)
             return super.created(res, "success", "User created successfully", result);
         }
         catch (error) {

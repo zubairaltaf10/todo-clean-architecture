@@ -1,5 +1,5 @@
-import app from "./bootstrap";
-import baserouter from "./routes";
+import app from "./Bootstrap";
+import baserouter from "./Routes";
 
 
 export {app,baserouter}

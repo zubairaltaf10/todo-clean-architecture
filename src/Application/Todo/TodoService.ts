@@ -1,8 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import Entity from '../../Domain/Entities/User/UserEntity';
 import { Todo } from '../../Domain/Entities/Todo/Todo';
 import TodoEntity from '../../Domain/Entities/Todo/TodoEntity';
-import { User } from '../../Domain/Entities/User/User';
 import { todoStore } from '../../Infrastructure/Database/Store/TodoStore';
 import { BaseService } from '../Base/BaseService';
 import { ITodoService } from './ITodoService';

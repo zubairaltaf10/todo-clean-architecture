@@ -1,6 +1,6 @@
 import { GetPagination } from "../../Application/Utils/GetPagination";
 import { Todo } from "../../Domain/Entities/Todo/Todo";
-import { TodoModel } from "../Database/models/Todo";
+import { TodoModel } from "../Database/Models/Todo";
 
 export class TodoRepository {
 

@@ -1,5 +1,4 @@
 import express from 'express';
-// import userService from '../services/users.service';
 import debug from 'debug';
 
 class TodoMiddleware {
