@@ -25,3 +25,14 @@ http
             - index.ts(export and import both files above)
 bin
     - www.ts(import server index.ts,.env config,listen server)
+
+
+
+    DDD
+    src /
+        application
+            business logic /src code
+        domain
+              entities
+        infrastructure (pascal)
+            db,models,3rd party
