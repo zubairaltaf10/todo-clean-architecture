@@ -6,7 +6,7 @@ import {
   InMemoryLocator,
   HandleInflector
 } from "simple-command-bus"
-import { CreateUserHandler } from "../Commands/CommandHandlers/EmailUserHandler";
+import { CreateUserHandler } from "../Commands/CommandHandlers/CreateUserHandler";
 
 export const commandHandlerMiddleware = new CommandHandlerMiddleware(
   new ClassNameExtractor(),

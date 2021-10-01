@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import  UserStore  from '../../Infrastructure/Database/Store/UserStore';
-import googleCredentials  from '../Utils/GoogleCredentials';
+import UserStore from '../../Infrastructure/Database/Store/UserStore';
+import googleCredentials from '../Utils/GoogleCredentials';
 import { BaseService } from '../Base/BaseService';
 import { v4 as uuidv4 } from 'uuid';
 import { IUserStore } from '../../Infrastructure/Database/Store/IStore';
@@ -10,29 +10,27 @@ class GoogleAuthService extends BaseService {
     userStore: IUserStore
     constructor() {
         super()
-     
     }
 
-    generateUrl(req,res){
+    generateUrl(req, res) {
         const url = googleCredentials.createUrl()
-        super.redirect(res,url)
+        super.redirect(res, url)
     }
 
     async connectToGoogle(req, res) {
         try {
             const result = await googleCredentials.getAccessToken(req.query.code)
-            const alreadyExist = await this.userStore.getUserbyEmail(result.email)
-            if (result && !alreadyExist) {
-                this.userStore.addUser({
-                    id: uuidv4(),
-                    name: result.name,
-                    email: result.email,
-                    password: null
-                })
-            }
-            else {
+            const userExist = await this.userStore.getUserbyEmail(result.email)
+            if (result && userExist) {
                 return super.error(res, "User already exists");
             }
+            
+            await this.userStore.addUser({
+                id: uuidv4(),
+                name: result.name,
+                email: result.email,
+                password: null
+            })
             return super.ok(res, "User successfully created");
         }
         catch (error) {

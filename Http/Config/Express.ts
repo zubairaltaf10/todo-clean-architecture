@@ -1,3 +1,3 @@
 export default {
-"EXPRESS_PORT" : process.env.EXPRESS_PORT
+    EXPRESS_PORT : process.env.EXPRESS_PORT
 }

@@ -15,7 +15,6 @@ class UserService extends BaseService implements IUserService {
 
     constructor() {
         super()
-        CreateUserCommand
     }
 
     async createUser(res: Response, user: User) {

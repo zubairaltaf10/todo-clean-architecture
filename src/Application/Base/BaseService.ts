@@ -13,11 +13,11 @@ export abstract class BaseService {
     }
 
     public ok(res: Response,data:{} | [],message?:string | {}): Response<any> {
-        if (data) {
-            return res.status(httpStatus.success).json({data,message});
-        } else {
+        if (!data) {
             return res.status(httpStatus.success);
-        }
+
+        } 
+        return res.status(httpStatus.success).json({data,message});
     }
 
     public created(res: Response,status:number | string = 200,message: string | {}, data : {} | []): Response<any> {

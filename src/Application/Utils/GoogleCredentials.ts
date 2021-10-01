@@ -7,8 +7,8 @@ class GoogleCredentials {
 
   static createUrl() {
     const stringifiedParams = queryString.stringify({
-      client_id: GoogleConfig.google_client_id,
-      redirect_uri: GoogleConfig.redirect_uri,
+      client_id: GoogleConfig.GOOGLE_CLIENT_ID,
+      redirect_uri: GoogleConfig.REDIRECT_URI,
       scope: [
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/userinfo.profile',
@@ -18,19 +18,19 @@ class GoogleCredentials {
       prompt: 'consent',
     });
 
-    const googleLoginUrl = `${GoogleConfig.auth_url}${stringifiedParams}`;
+    const googleLoginUrl = `${GoogleConfig.AUTH_URL}${stringifiedParams}`;
     return googleLoginUrl;
   }
 
   static async getAccessToken(code: string) {
     try {
       const { data } = await axios({
-        url: GoogleConfig.google_access_token_url,
+        url: GoogleConfig.GOOGLE_ACCESS_TOKEN_URL,
         method: 'post',
         data: {
-          client_id: GoogleConfig.google_client_id,
-          client_secret: GoogleConfig.google_client_secret,
-          redirect_uri: GoogleConfig.redirect_uri,
+          client_id: GoogleConfig.GOOGLE_CLIENT_ID,
+          client_secret: GoogleConfig.GOOGLE_CLIENT_SECRET,
+          redirect_uri: GoogleConfig.REDIRECT_URI,
           grant_type: 'authorization_code',
           code,
         },
@@ -49,7 +49,7 @@ class GoogleCredentials {
 
   static async getUserInfo(accessToken) {
     const { data } = await axios({
-      url: GoogleConfig.google_user_info_url,
+      url: GoogleConfig.GOOGLE_USER_INFO_URL,
       method: 'get',
       headers: {
         Authorization: `Bearer ${accessToken}`,

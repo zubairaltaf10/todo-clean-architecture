@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express'
+import { Router } from 'express'
 import TodoController from '../Controllers/TodoController';
 import TodoMiddleware from '../Middlewares/Todo'
 
@@ -18,7 +18,7 @@ todoRouter.post('/add', TodoMiddleware.validateRequiredTodoBodyField, (req, res,
 )
 
 
-todoRouter.delete('/:id', TodoMiddleware.validateParamsTodo, (req, res, next) =>
+todoRouter.delete('/id/:id', TodoMiddleware.validateParamsTodo, (req, res, next) =>
     TodoController.deleteTODO(req, res, next)
 )
 
